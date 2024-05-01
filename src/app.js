@@ -44,3 +44,17 @@ export const getTotal = (items = [], discount = 0) => {
   }, 0)
   return total - (total * discount) / 100
 }
+
+/**
+ * Определение общей суммы баллов успеваемости
+ * 
+ * @param {name: string, age: number} items 
+ */
+export const getScore = (items) => {
+  let scoreSum = 0;
+  for (const key in items) {
+    scoreSum += items[key]
+  }
+  return scoreSum;
+}
+
