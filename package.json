@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "babel-node src/main.js",
     "format:ci": "prettier . --check",
@@ -24,6 +23,7 @@
     "@babel/core": "^7.24.4",
     "@babel/node": "^7.23.9",
     "@babel/preset-env": "^7.24.4",
+    "@faker-js/faker": "^8.4.1",
     "@jest/types": "^29.6.3",
     "@types/jest": "^29.5.12",
     "eslint": "^8.57.0",
