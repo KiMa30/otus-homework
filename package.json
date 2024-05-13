@@ -23,6 +23,7 @@
     "@babel/core": "^7.24.4",
     "@babel/node": "^7.23.9",
     "@babel/preset-env": "^7.24.4",
+    "@faker-js/faker": "^8.4.1",
     "@jest/types": "^29.6.3",
     "@types/jest": "^29.5.12",
     "eslint": "^8.57.0",
@@ -37,6 +38,8 @@
     "prettier": "^3.2.5"
   },
   "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "node-fetch": "^3.3.2"
   }
 }
