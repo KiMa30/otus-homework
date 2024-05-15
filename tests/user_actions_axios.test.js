@@ -1,6 +1,7 @@
 import { config } from '../framework/config/config'
-import { faker } from '@faker-js/faker'
+// import { faker } from '@faker-js/faker'
 import UserActionsHelpers from '../framework/helpers/UserActionsHelpers'
+import { getRandomUserCreds } from '../framework/fuxtures/CredsGen'
 
 describe('Auth in bookstore', () => {
   let userUUID
@@ -9,14 +10,7 @@ describe('Auth in bookstore', () => {
   let nameOfUser
 
   beforeAll(async () => {
-    function getRandomUsername() {
-      return {
-        username: faker.internet.userName(),
-        password: faker.internet.password(),
-      }
-    }
-
-    creds = getRandomUsername()
+    creds = getRandomUserCreds()
     nameOfUser = creds.username
   })
 

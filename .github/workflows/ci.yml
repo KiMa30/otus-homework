@@ -37,4 +37,5 @@ jobs:
           node-version: 20.11.0
           cache: 'npm'
       - run: npm ci
+      - run: echo "${{ vars.REMOTE_ENV }}" >> .env
       - run: npm test

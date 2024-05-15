@@ -1,4 +1,14 @@
+import { getRandomUserCreds } from '../framework/fuxtures/CredsGen'
+
 describe('Auth in bookstore', () => {
+  let nameOfUser
+  let creds
+
+  beforeAll(async () => {
+    creds = getRandomUserCreds()
+    nameOfUser = creds.username
+  })
+
   test('Success user creation', async () => {
     const response = await fetch(
       'https://bookstore.demoqa.com/Account/v1/User',
@@ -8,7 +18,7 @@ describe('Auth in bookstore', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userName: 'polzovatel4',
+          userName: nameOfUser,
           password: 'passworD!1',
         }),
       },
@@ -25,7 +35,7 @@ describe('Auth in bookstore', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userName: 'polzovatel4',
+          userName: nameOfUser,
           password: 'passworD!1',
         }),
       },
@@ -44,7 +54,7 @@ describe('Auth in bookstore', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userName: 'polzovatel4',
+          userName: nameOfUser,
           password: 'passw',
         }),
       },
@@ -82,7 +92,7 @@ describe('Auth in bookstore', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userName: 'polzovatel4',
+          userName: nameOfUser,
           password: 'passwo',
         }),
       },
