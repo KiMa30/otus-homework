@@ -13,7 +13,10 @@
     "codestyle": "run-s lint format",
     "build": "babel src --out-dir build --source-maps inline",
     "test": "jest --verbose",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "allure:local": "allure serve allure-results",
+    "allure:ci": "allure generate allure-results --clean",
+    "allure:ci:show": "allure open allure-report"
   },
   "author": "Damir Rysaev <freepad@ya.ru>",
   "keywords": [],
@@ -26,6 +29,8 @@
     "@faker-js/faker": "^8.4.1",
     "@jest/types": "^29.6.3",
     "@types/jest": "^29.5.12",
+    "allure-commandline": "^2.29.0",
+    "allure-jest": "^2.15.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
@@ -34,6 +39,8 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
     "jest": "^29.7.0",
+    "jest-html-reporter": "^3.10.2",
+    "jest-html-reporters": "^3.1.7",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5"
   },

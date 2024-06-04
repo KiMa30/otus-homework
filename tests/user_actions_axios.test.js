@@ -2,6 +2,7 @@ import { config } from '../framework/config/config'
 // import { faker } from '@faker-js/faker'
 import UserActionsHelpers from '../framework/helpers/UserActionsHelpers'
 import { getRandomUserCreds } from '../framework/fuxtures/CredsGen'
+import { addMsg } from 'jest-html-reporters/helper'
 
 describe('Auth in bookstore', () => {
   let userUUID
@@ -31,10 +32,16 @@ describe('Auth in bookstore', () => {
   })
 
   test('Token successfuly created', async () => {
-    const responseToken = await UserActionsHelpers.post({
+    const credentionals = {
       userName: nameOfUser,
       password: config.password,
+    }
+
+    addMsg({
+      message: `Пользователь: ${JSON.stringify(credentionals, null, 4)},`,
     })
+
+    const responseToken = await UserActionsHelpers.post(credentionals)
 
     authToken = responseToken.data.token
     expect(responseToken.data.result).toBe('User authorized successfully.')
