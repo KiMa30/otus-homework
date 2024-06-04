@@ -70,7 +70,8 @@ jobs:
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TG_CHANNEL_ID }}
+          # to: ${{ secrets.TG_CHANNEL_ID }}
+          to: -2211185108
           token: ${{ secrets.TG_CHANNEL_TOKEN }}
           photo: ./R&M.png
           message: |
