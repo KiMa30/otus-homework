@@ -207,7 +207,7 @@ const config = {
     ],
   ],
 
-  testEnvironment: 'allure-jest/node'
+  testEnvironment: 'allure-jest/node',
 }
 
 module.exports = config
