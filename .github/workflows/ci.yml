@@ -61,7 +61,7 @@ jobs:
         run: npm test
 
       - name: Upload report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: report
           if-no-files-found: error
@@ -70,8 +70,7 @@ jobs:
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master
         with:
-          # to: ${{ secrets.TG_CHANNEL_ID }}
-          to: -1002212198387
+          to: ${{ secrets.TG_CHANNEL_ID }}
           token: ${{ secrets.TG_CHANNEL_TOKEN }}
           photo: ./R&M.png
           message: |
@@ -83,7 +82,7 @@ jobs:
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
 
       - name: Upload report
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: './reports/html-report'
 
