@@ -71,7 +71,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           # to: ${{ secrets.TG_CHANNEL_ID }}
-          to: -2211185108
+          to: -2212198387
           token: ${{ secrets.TG_CHANNEL_TOKEN }}
           photo: ./R&M.png
           message: |
