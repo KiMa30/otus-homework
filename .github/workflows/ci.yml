@@ -1,6 +1,18 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   eslint:
@@ -10,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.11.0
+          node-version: 21.2.0
           cache: 'npm'
       - run: npm ci
       - run: npm run lint:ci
@@ -22,19 +34,58 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.11.0
+          node-version: 21.2.0
           cache: 'npm'
       - run: npm ci
       - run: npm run format:ci
 
   test:
+    timeout-minutes: 10
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.11.0
+          node-version: 21.2.0
           cache: 'npm'
-      - run: npm ci
-      - run: npm test
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set environment variables
+        run: echo "${{ vars.REMOTE_ENV }}" >> .env
+
+      - name: Run tests
+        run: npm test
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: report
+          if-no-files-found: error
+          path: ./reports/html-report
+
+      - name: Send Telegram Notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TG_CHANNEL_ID }}
+          token: ${{ secrets.TG_CHANNEL_TOKEN }}
+          photo: ./R&M.png
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+
+            Repository: ${{ github.repository }}
+
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
+      - name: Upload report
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './reports/html-report'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
