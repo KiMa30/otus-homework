@@ -1,10 +1,12 @@
 module.exports = {
   env: {
+    "codeceptjs/codeceptjs": true,
     es2021: true,
     node: true,
     'jest/globals': true,
   },
-  extends: ['standard', 'prettier'],
+  extends: ['standard', 'prettier', "plugin:codeceptjs/recommended"],
+  plugins: ["codeceptjs"],
   overrides: [
     {
       env: {
@@ -28,5 +30,16 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    // "codeceptjs/no-actor-in-scenario": 2
+  },
+
+  globals: {
+    Given: 'readonly',
+    When: 'readonly',
+    Then: 'readonly',
+    Дано: 'readonly',
+    Когда: 'readonly',
+    Тогда: 'readonly'
+  }
 }
