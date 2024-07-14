@@ -1,12 +1,12 @@
 module.exports = {
   env: {
-    "codeceptjs/codeceptjs": true,
+    'codeceptjs/codeceptjs': true,
     es2021: true,
     node: true,
     'jest/globals': true,
   },
-  extends: ['standard', 'prettier', "plugin:codeceptjs/recommended"],
-  plugins: ["codeceptjs"],
+  extends: ['standard', 'prettier', 'plugin:codeceptjs/recommended'],
+  plugins: ['codeceptjs'],
   overrides: [
     {
       env: {
@@ -40,6 +40,6 @@ module.exports = {
     Then: 'readonly',
     Дано: 'readonly',
     Когда: 'readonly',
-    Тогда: 'readonly'
-  }
+    Тогда: 'readonly',
+  },
 }

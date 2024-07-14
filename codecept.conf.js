@@ -4,13 +4,13 @@ exports.config = {
     Playwright: {
       browser: 'chromium',
       url: 'https://www.saucedemo.com',
-      show: false
-    }
+      show: false,
+    },
   },
   include: {
     I: './steps_file.js',
     loginPagePage: './bdd_tests/pages/LoginPage.js',
-    authResultPage: './bdd_tests/pages/AuthResult.js'
+    authResultPage: './bdd_tests/pages/AuthResult.js',
   },
   mocha: {},
   bootstrap: null,
@@ -19,36 +19,37 @@ exports.config = {
   hooks: [],
   gherkin: {
     features: './features/login.feature',
-    steps: ['./step_definitions/login_steps.js']
+    steps: ['./step_definitions/login_steps.js'],
   },
   plugins: {
     screenshotOnFail: {
-      enabled: true
+      enabled: true,
     },
     tryTo: {
-      enabled: true
+      enabled: true,
     },
     retryFailedStep: {
-      enabled: true
+      enabled: true,
     },
     retryTo: {
-      enabled: true
+      enabled: true,
     },
     eachElement: {
-      enabled: true
+      enabled: true,
     },
-    pauseOnFail: {}
+    pauseOnFail: {},
   },
   stepTimeout: 0,
-  stepTimeoutOverride: [{
+  stepTimeoutOverride: [
+    {
       pattern: 'wait.*',
-      timeout: 0
+      timeout: 0,
     },
     {
       pattern: 'amOnPage',
-      timeout: 0
-    }
+      timeout: 0,
+    },
   ],
   tests: './bdd_tests/bdd_tests.js',
-  name: 'qajs-2024-03'
+  name: 'qajs-2024-03',
 }

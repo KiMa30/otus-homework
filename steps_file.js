@@ -1,9 +1,9 @@
 // in this file you can append custom step methods to 'I' object
 
-module.exports = function() {
+module.exports = function () {
   return actor({
-    goToHomePage: function() {
-      this.amOnPage('');
-    }
-  });
+    goToHomePage: function () {
+      this.amOnPage('')
+    },
+  })
 }
