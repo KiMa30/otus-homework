@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     'jest/globals': true,
   },
-  extends: ['standard', 'prettier', 'plugin:codeceptjs/recommended'],
+  extends: ['standard', 'prettier'],
   plugins: ['codeceptjs'],
   overrides: [
     {
@@ -24,6 +24,13 @@ module.exports = {
       env: {
         jest: true,
       },
+    },
+    {
+      files: [
+      'step_definitions/*.js',
+      'bdd_tests/**/*.js',
+      ],
+      extends: ['plugin:codeceptjs/recommended'],
     },
   ],
   parserOptions: {

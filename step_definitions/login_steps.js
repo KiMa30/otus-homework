@@ -1,4 +1,4 @@
-const { I, loginPagePage, authResultPage } = inject()
+const { I, loginPage, authResultPage } = inject()
 
 Given('я на главной странице', () => {
   I.goToHomePage()
@@ -7,7 +7,7 @@ Given('я на главной странице', () => {
 When(
   'я ввожу имя пользователя {string} и пароль {string}',
   (username, password) => {
-    loginPagePage.login(username, password)
+    loginPage.login(username, password)
   },
 )
 
@@ -20,7 +20,7 @@ Then('я не вижу {string}', text => {
 })
 
 When('я выхожу', () => {
-  loginPagePage.logOut()
+  loginPage.logOut()
 })
 
 Then('я вижу сообщение об ошибке {string}', message => {

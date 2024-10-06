@@ -9,7 +9,7 @@ exports.config = {
   },
   include: {
     I: './steps_file.js',
-    loginPagePage: './bdd_tests/pages/LoginPage.js',
+    loginPage: './bdd_tests/pages/LoginPage.js',
     authResultPage: './bdd_tests/pages/AuthResult.js',
   },
   mocha: {},
